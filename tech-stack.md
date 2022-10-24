@@ -1,14 +1,14 @@
-`Front End`
+## Frontend
 nextJS
 
-`Back End`
+## Backend
 sanity
 
-`State Management`
+## State Management
 React context API
 
-`Payment`
+## Payment
 Stripe
 
-`Deployment`
-Vercel
+## Deployment
+[NextJS Frontend Deployed at Vercel](https://react-shopping-cart-sooty.vercel.app/)
