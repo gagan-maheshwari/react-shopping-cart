@@ -9,4 +9,4 @@ Once done, `cd` into the sanity folder and you can run the following commands:
 	>	sanity manage
 	>	sanity help
 
-https://youtu.be/4mOkFXyxfsU?t=937
+Stripe account is signed in with username: ggm.vawsum@gmail.com

@@ -4,5 +4,11 @@ nextJS
 `Back End`
 sanity
 
-`Single Source of Truth`
+`State Management`
 React context API
+
+`Payment`
+Stripe
+
+`Deployment`
+Vercel

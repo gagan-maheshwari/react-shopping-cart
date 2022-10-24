@@ -28,7 +28,7 @@ export const StateContext = ({ children }) =>
 						...cartProduct,
 						quantity: cartProduct.quantity + quantity
 					};
-				};
+				}
 			});
 
 			setCartItems(updatedCartItems);
@@ -98,7 +98,9 @@ export const StateContext = ({ children }) =>
 			value=
 			{
 				{
-					setShowCart, showCart, cartItems, totalPrice, totalQuantities, qty, incQty, decQty, onAdd, toggleCartItemQuantity, onRemove
+					qty, showCart, cartItems, totalPrice, totalQuantities,
+					setShowCart, incQty, decQty, onAdd, toggleCartItemQuantity, onRemove,
+					setCartItems, setTotalPrice, setTotalQuantities
 				}
 			}
 		>
