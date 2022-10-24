@@ -3,12 +3,13 @@ import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from "react-
 
 import { client, urlFor } from "../../lib/client";
 import { Product } from "../../components";
+import { useStateContext } from "../../context/StateContext";
 
-const ProductDetails = ({ productDetails, similarProducts }) =>
+const ProductDetails = ({ currentProduct, similarProducts }) =>
 {
-	const { image, name, details, price } = productDetails;
-
+	const { image, name, details, price } = currentProduct;
 	const [index, setIndex] = useState(0);
+	const { decQty, incQty, qty, onAdd } = useStateContext();
 
 	return (
 		<div>
@@ -60,22 +61,22 @@ const ProductDetails = ({ productDetails, similarProducts }) =>
 						</h3>
 
 						<p className="quantity-desc">
-							<span className="minus" onClick="">
+							<span className="minus" onClick={decQty}>
 								<AiOutlineMinus />
 							</span>
 
 							<span className="num">
-								0
+								{qty}
 							</span>
 
-							<span className="plus" onClick="">
+							<span className="plus" onClick={incQty}>
 								<AiOutlinePlus />
 							</span>
 						</p>
 					</div>
 
 					<div className="buttons">
-						<button type="button" className="add-to-cart" onClick="">
+						<button type="button" className="add-to-cart" onClick={() => onAdd(currentProduct, qty)}>
 							Add to Cart
 						</button>
 						<button type="button" className="buy-now" onClick="">
@@ -130,14 +131,14 @@ export const getStaticPaths = async () =>
 
 export const getStaticProps = async ({ params: { slug } }) =>
 {
-	const productDetailsQuery = `*[_type == "product" && slug.current == '${slug}'][0]`;
+	const currentProductQuery = `*[_type == "product" && slug.current == '${slug}'][0]`;
 	const similarProductsQuery = `*[_type == "product"]`;
 
-	const productDetails = await client.fetch(productDetailsQuery);
+	const currentProduct = await client.fetch(currentProductQuery);
 	const similarProducts = await client.fetch(similarProductsQuery);
 
 	return {
-		props: { productDetails, similarProducts }
+		props: { currentProduct, similarProducts }
 	};
 };
 
